@@ -52,5 +52,4 @@ graphviz (via pydot).  All others are skipped.
     G.add_edge(3, 3, label='a')
     draw(G)
 
-<img src="images/demo.png" alt="IPython Notebook Example" style="width: 736px;"/>
 ![IPython Notebook Example](images/demo.png)
