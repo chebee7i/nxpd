@@ -5,8 +5,8 @@ Note: Much of this module exists in NetworkX 1.8.  NetworkX will probably
 continue to support basic conversions between NetworkX and pydot+graphviz,
 but visualization functionality may be discontinued in future versions.
 
-pydot only supports Python versions 2.6+ but the 3.x series.  A version which
-supports 2.6+ and 3.x is available here:
+pydot only supports Python versions 2.6+ but not the 3.x series.  A version
+which supports 2.6+ and 3.x is available here:
 
    https://github.com/nlhepler/pydot
 
@@ -340,7 +340,8 @@ def pydot_layout(G, prog='neato', root=None, **kwds):
 
     node_pos = {}
     for n in G.nodes():
-        pydot_node = pydot.Node(make_str(n)).get_name().encode('utf-8')
+        # Do not encode into utf-8.  pydot handles all encodings.
+        pydot_node = pydot.Node(make_str(n)).get_name()
         node = Q.get_node(pydot_node)
 
         if isinstance(node,list):
@@ -348,7 +349,7 @@ def pydot_layout(G, prog='neato', root=None, **kwds):
         pos = node.get_pos()[1:-1] # strip leading and trailing double quotes
         if pos != None:
             xx,yy = pos.split(",")
-            node_pos[n] = (float(xx),float(yy))
+            node_pos[n] = (float(xx), float(yy))
     return node_pos
 
 def draw_pydot(G, filename=None, format=None, prefix=None, suffix=None,
