@@ -7,13 +7,18 @@ notebooks.
 
 Installation
 ============
-Clone this repository:
+
+Installation is easy, provided you have `git` and `pip` set up:
+
+    pip install git+http://github.com/chebee7i/nxpd/#egg=nxpd
+
+If you want to do this manually, clone this repository:
 
     git clone https://github.com/chebee7i/nxpd
 
-Move into the directory and install the package.
+Then, move into the `nxpd` directory and install the package with `pip`.
 
-    python setup.py install
+    pip install .
 
 Usage
 =====
