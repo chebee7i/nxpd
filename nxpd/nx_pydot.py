@@ -331,16 +331,18 @@ def pydot_layout(G, prog='neato', root=None, **kwds):
     if root is not None :
         P.set("root",make_str(root))
 
+    # Need to verify this, but pydot encodes as utf-8.
     D = P.create_dot(prog=prog)
 
     if D == "":  # no data returned
         raise Exception("Graphviz layout with {0} failed.".format(prog))
 
+    # And pydot decodes from utf-8. So the nodes in Q are unicode.
     Q = pydot.graph_from_dot_data(D)
 
     node_pos = {}
     for n in G.nodes():
-        # Do not encode into utf-8.  pydot handles all encodings.
+        # pydot handles all encodings/decodings, so we keep it unicode.
         pydot_node = pydot.Node(make_str(n)).get_name()
         node = Q.get_node(pydot_node)
 
