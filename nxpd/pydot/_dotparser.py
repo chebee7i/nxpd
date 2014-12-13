@@ -8,14 +8,13 @@ The module needs pyparsing (tested with version 1.2.2) and pydot
 Author: Michael Krause <michael@krause-software.de>
 Fixes by: Ero Carrera <ero@dkbza.org>
 """
-
+from __future__ import absolute_import
 from __future__ import division, print_function
 
 __author__ = ['Michael Krause', 'Ero Carrera']
 __license__ = 'MIT'
 
 import sys
-import pydot
 import codecs
 
 from pyparsing import __version__ as pyparsing_version
@@ -27,6 +26,8 @@ from pyparsing import (
     ParseResults, CharsNotIn, QuotedString
     )
 
+
+from . import __init__ as pydot
 
 PY3 = not sys.version_info < (3, 0, 0)
 
