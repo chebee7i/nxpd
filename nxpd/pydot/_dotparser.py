@@ -26,8 +26,8 @@ from pyparsing import (
     ParseResults, CharsNotIn, QuotedString
     )
 
-
-from . import __init__ as pydot
+# Safe since this module is not imported when nxpd.pydot is loaded.
+from nxpd import pydot
 
 PY3 = not sys.version_info < (3, 0, 0)
 

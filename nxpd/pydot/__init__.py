@@ -32,12 +32,6 @@ import copy
 
 from operator import itemgetter
 
-try:
-    from . import _dotparser as dot_parser
-except Exception:
-    print("Couldn't import _dotparser, loading of dot files will not be possible.")
-
-
 PY3 = not sys.version_info < (3, 0, 0)
 
 if PY3:
@@ -286,7 +280,7 @@ def graph_from_dot_data(data):
     be parsed and a Dot class will be returned,
     representing the graph.
     """
-
+    from . import _dotparser as dot_parser
     return dot_parser.parse_dot_data(data)
 
 
