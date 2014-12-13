@@ -53,7 +53,7 @@ __author__ = "\n".join(["Aric Hagberg (aric.hagberg@gmail.com)",
 __all__ = ['write_dot', 'read_dot', 'graphviz_layout', 'pydot_layout',
            'to_pydot', 'from_pydot', 'draw_pydot']
 
-def write_dot(G, path):
+def write_dot(G, path, mode='r'):
     """Write NetworkX graph G to Graphviz dot format on path.
 
     Path can be a string or a file handle.
@@ -63,12 +63,12 @@ def write_dot(G, path):
 
     fobj, close = get_fobj(path, mode)
     try:
-        path.write(P.to_string())
+        fobj.write(P.to_string())
     finally:
         if close:
             fobj.close()
 
-def read_dot(path):
+def read_dot(path, mode='r'):
     """Return a NetworkX MultiGraph or MultiDiGraph from a dot file on path.
 
     Parameters
@@ -88,7 +88,7 @@ def read_dot(path):
     fobj, close = get_fobj(path, mode)
 
     try:
-        data = path.read()
+        data = fobj.read()
     finally:
         if close:
             fobj.close()
