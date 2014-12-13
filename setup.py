@@ -36,7 +36,7 @@ notebooks.
 
     kwds = {
         'name':              "nxpd",
-        'version':           "0.1",
+        'version':           "0.1.1",
         'url':               "https://github.com/chebee7i/nxpd",
 
         'packages':          packages,
