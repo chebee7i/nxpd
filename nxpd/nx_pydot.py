@@ -277,20 +277,20 @@ def to_pydot(G, raise_exceptions=True):
                 raise
 
     # Add the nodes.
-    for n,nodedata in G.nodes_iter(data=True):
+    for n,nodedata in G.nodes(data=True):
         attrs = filter_attrs(nodedata, 'node')
         node = pydot.Node(make_str(n), **attrs)
         P.add_node(node)
 
     # Add the edges.
     if G.is_multigraph():
-        for u,v,key,edgedata in G.edges_iter(data=True,keys=True):
+        for u,v,key,edgedata in G.edges(data=True,keys=True):
             attrs = filter_attrs(edgedata, 'edge')
             uu, vv, kk = make_str(u), make_str(v), make_str(key)
             edge = pydot.Edge(uu, vv, key=kk, **attrs)
             P.add_edge(edge)
     else:
-        for u,v,edgedata in G.edges_iter(data=True):
+        for u,v,edgedata in G.edges(data=True):
             attrs = filter_attrs(edgedata, 'edge')
             uu, vv = make_str(u), make_str(v)
             edge = pydot.Edge(uu, vv, **attrs)
